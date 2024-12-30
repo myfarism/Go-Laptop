@@ -15,6 +15,7 @@ class KatalogController extends Controller
 
         $laptops = Laptop::whereBetween('harga', [$min_price, $max_price])
             ->where('nama_laptop', 'like', "%$search%")
+            ->where('status', 'tidak disewa')
             ->get();
 
         return view('katalog', compact('laptops'));
