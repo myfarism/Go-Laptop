@@ -12,7 +12,7 @@
                     <p class="text-2xl font-bold">{{ $availableLaptops }}</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-lg font-semibold">Jumlah Penyewaan Aktif</h3>
+                    <h3 class="text-lg font-semibold">Jumlah Laptop Disewa</h3>
                     <p class="text-2xl font-bold">{{ $activeRentals }}</p>
                 </div>
             </div>

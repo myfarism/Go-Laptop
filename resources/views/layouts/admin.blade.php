@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Dashboard') - Rental Laptop</title>
     
     <!-- Stylesheets -->
@@ -24,6 +25,11 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+        }
+
+        .table-container {
+            max-height: 300px; /* Set a maximum height for the table */
+            overflow-y: auto; /* Enable vertical scrolling */
         }
     </style>
 
@@ -119,69 +125,85 @@
             // }
 
             // Edit Laptop Form Handler
-            const editLaptopForm = document.getElementById('editLaptopForm');
-            if (editLaptopForm) {
-                editLaptopForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(this);
-                    const laptopId = document.getElementById('editLaptopId').value;
+            // const editLaptopForm = document.getElementById('editLaptopForm');
+            // if (editLaptopForm) {
+            //     editLaptopForm.addEventListener('submit', async function(e) {
+            //         e.preventDefault();
+            //         const formData = new FormData(this);
+            //         const laptopId = document.getElementById('editLaptopId').value;
 
-                    try {
-                        const response = await fetch(`/admin/laptops/${laptopId}`, {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                                'X-HTTP-Method-Override': 'PUT'
-                            }
-                        });
+            //         try {
+            //             const response = await fetch(`/admin/laptops/${laptopId}`, {
+            //                 method: 'POST',
+            //                 body: formData,
+            //                 headers: {
+            //                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            //                     'X-HTTP-Method-Override': 'PUT'
+            //                 }
+            //             });
 
-                        const data = await response.json();
-                        alert(data.message);
-                        closeModal('editLaptopModal');
-                        location.reload();
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Terjadi kesalahan saat mengupdate laptop');
-                    }
-                });
-            }
+            //             const data = await response.json();
+            //             alert(data.message);
+            //             closeModal('editLaptopModal');
+            //             location.reload();
+            //         } catch (error) {
+            //             console.error('Error:', error);
+            //             alert('Terjadi kesalahan saat mengupdate laptop');
+            //         }
+            //     });
+            // }
         });
 
-        // Delete Laptop Handler
-        async function deleteLaptop(id) {
-            if (confirm('Apakah Anda yakin ingin menghapus laptop ini?')) {
-                try {
-                    const response = await fetch(`/admin/laptops/${id}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-                        }
-                    });
-
-                    const data = await response.json();
-                    alert(data.message);
-                    location.reload();
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan saat menghapus laptop');
-                }
+        function confirmDelete(kode, nama) {
+            if (confirm(`Apakah Anda yakin ingin menghapus laptop ${nama}?`)) {
+                deleteLaptop(kode);
             }
         }
 
-        // Edit Modal Handler
-        function openEditModal(id, name, processor, ram, penyimpanan, layar, harga, deskripsi, gambar, status) {
-            document.getElementById('editLaptopId').value = id;
-            document.getElementById('editLaptopName').value = name;
-            document.getElementById('editLaptopProcessor').value = processor;
+        // Delete Laptop Handler
+        async function deleteLaptop(kode) {
+            try {
+                const response = await fetch(`/admin/laptops/${kode}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Tampilkan pesan sukses
+                    alert(data.message);
+                    // Reload halaman untuk memperbarui daftar laptop
+                    window.location.reload();
+                } else {
+                    // Tampilkan pesan error dari server
+                    alert(data.message || 'Terjadi kesalahan saat menghapus laptop');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan saat menghapus laptop');
+            }
+        }
+        //Edit Modal Handler
+        function openEditModal(kode, nama, prosesor, ram, penyimpanan, layar, harga, deskripsi, status, gambar) {
+            const form = document.getElementById('editLaptopForm');
+            form.action = `/admin/laptops/${kode}`;
+            
+            document.getElementById('editLaptopKode').value = kode;
+            document.getElementById('editLaptopName').value = nama;
+            document.getElementById('editLaptopProcessor').value = prosesor;
             document.getElementById('editLaptopRam').value = ram;
-            document.getElementById('editLaptopPenyimpanan').value = penyimpanan;
-            document.getElementById('editLaptopLayar').value = layar;
-            document.getElementById('editLaptopHarga').value = harga;
-            document.getElementById('editLaptopDeskripsi').value = deskripsi;
+            document.getElementById('editLaptopStorage').value = penyimpanan;
+            document.getElementById('editLaptopScreen').value = layar;
+            document.getElementById('editLaptopPrice').value = harga;
+            document.getElementById('editLaptopDesc').value = deskripsi;
             document.getElementById('editLaptopStatus').value = status;
-            document.getElementById('currentLaptopImage').src = '/storage/' + gambar;
-            document.getElementById('editLaptopGambar').value = '';
+            document.getElementById('currentImage').src = gambar;
+            
             openModal('editLaptopModal');
         }
     </script>

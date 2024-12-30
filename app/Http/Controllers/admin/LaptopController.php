@@ -51,7 +51,8 @@ class LaptopController extends Controller
                 'gambar' => $imagePath
             ]);
 
-            return response()->json(['message' => 'Laptop berhasil ditambahkan']);
+            return redirect()->route('admin.dashboard')->with('success', 'Laptop berhasil ditambahkan.');
+    } catch (\Exception $e) {
         } catch (\Exception $e) {
             // Menangkap error dan log
             Log::error('Error saat menyimpan laptop:', ['error' => $e->getMessage()]);
@@ -60,8 +61,10 @@ class LaptopController extends Controller
     }
 
 
-    public function update(Request $request, Laptop $laptop)
+    public function update(Request $request, $kode)
     {
+        $laptop = Laptop::where('kode', $kode)->firstOrFail();
+        
         $validated = $request->validate([
             'nama_laptop' => 'required',
             'prosesor' => 'required',
@@ -74,27 +77,49 @@ class LaptopController extends Controller
             'gambar' => 'nullable|image|max:500'
         ]);
 
+        // Handle gambar jika ada upload gambar baru
         if ($request->hasFile('gambar')) {
-            // Delete old image
+            // Hapus gambar lama
             if ($laptop->gambar) {
                 Storage::disk('public')->delete($laptop->gambar);
             }
+            // Upload gambar baru
             $validated['gambar'] = $request->file('gambar')->store('produk', 'public');
         }
 
         $laptop->update($validated);
 
-        return response()->json(['message' => 'Laptop berhasil diperbarui']);
+        return redirect()->route('admin.dashboard')->with('success', 'Laptop berhasil diperbarui');
     }
 
-    public function destroy(Laptop $laptop)
+    public function destroy($kode)
     {
-        if ($laptop->gambar) {
-            Storage::disk('public')->delete($laptop->gambar);
+        try {
+            $laptop = Laptop::where('kode', $kode)->firstOrFail();
+            
+            // Hapus file gambar jika ada
+            if ($laptop->gambar) {
+                $imagePath = str_replace('storage/', '', $laptop->gambar);
+                if (Storage::disk('public')->exists($imagePath)) {
+                    Storage::disk('public')->delete($imagePath);
+                }
+            }
+            
+            // Hapus data laptop
+            $laptop->delete();
+            
+            return response()->json([
+                'success' => true,
+                'message' => "Laptop {$laptop->nama_laptop} berhasil dihapus"
+            ]);
+            
+        } catch (\Exception $e) {
+            Log::error('Error deleting laptop: ' . $e->getMessage());
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat menghapus laptop'
+            ], 500);
         }
-        
-        $laptop->delete();
-
-        return response()->json(['message' => 'Laptop berhasil dihapus']);
     }
 }

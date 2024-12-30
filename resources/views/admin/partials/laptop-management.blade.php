@@ -16,6 +16,7 @@
                 onclick="openModal('addLaptopModal')">Tambah Laptop Baru</button>
     </div>
     <div class="bg-white p-6 rounded-lg shadow-lg">
+        <div class="table-container">
         <table class="w-full table-auto">
             <thead>
                 <tr>
@@ -37,11 +38,11 @@
                     <td class="border px-4 py-2">{{ $laptop->status }}</td>
                     <td class="border px-4 py-2">
                         <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
-                                onclick="openEditModal('{{ $laptop->id }}', '{{ $laptop->nama_laptop }}', '{{ $laptop->prosesor }}','{{ $laptop->ram }}','{{ $laptop->penyimpanan }}', '{{ $laptop->layar }}','{{ $laptop->harga }}','{{ $laptop->deskripsi }}','{{ $laptop->gambar }}','{{ $laptop->status }}')">
+                                onclick="openEditModal('{{ $laptop->kode }}', '{{ $laptop->nama_laptop }}', '{{ $laptop->prosesor }}', '{{ $laptop->ram }}', '{{ $laptop->penyimpanan }}', '{{ $laptop->layar }}', '{{ $laptop->harga }}', '{{ $laptop->deskripsi }}', '{{ $laptop->status }}', '{{ asset('storage/'.$laptop->gambar) }}')">
                             Edit
                         </button>
                         <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                                onclick="deleteLaptop('{{ $laptop->id }}')">
+                                onclick="confirmDelete('{{ $laptop->kode }}', '{{ $laptop->nama_laptop }}')">
                             Hapus
                         </button>
                     </td>
@@ -49,6 +50,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 </section>
 
@@ -107,5 +109,62 @@
             </div>
         </form>
 
+    </div>
+</div>
+
+
+<!-- Modal Edit Laptop -->
+<div id="editLaptopModal" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-1/3 max-h-[80vh] overflow-y-auto">
+        <h3 class="text-lg font-semibold mb-4">Edit Laptop</h3>
+        <form id="editLaptopForm" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <input type="hidden" id="editLaptopKode" name="kode">
+            <div class="mb-4">
+                <label class="block text-gray-700">Nama Laptop</label>
+                <input type="text" id="editLaptopName" name="nama_laptop" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Prosesor</label>
+                <input type="text" id="editLaptopProcessor" name="prosesor" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Ram</label>
+                <input type="text" id="editLaptopRam" name="ram" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Penyimpanan</label>
+                <input type="text" id="editLaptopStorage" name="penyimpanan" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Layar</label>
+                <input type="text" id="editLaptopScreen" name="layar" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Harga</label>
+                <input type="text" id="editLaptopPrice" name="harga" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Deskripsi</label>
+                <input type="text" id="editLaptopDesc" name="deskripsi" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Status</label>
+                <select id="editLaptopStatus" name="status" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="tidak disewa">Tidak Disewa</option>
+                    <option value="disewa">Disewa</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Gambar Laptop</label>
+                <img id="currentImage" src="" alt="Current Image" class="w-32 h-32 object-cover mb-2">
+                <input type="file" name="gambar" accept="image/*" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="flex justify-end">
+                <button type="button" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg mr-2" onclick="closeModal('editLaptopModal')">Batal</button>
+                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded-lg">Update</button>
+            </div>
+        </form>
     </div>
 </div>

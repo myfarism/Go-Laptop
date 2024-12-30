@@ -64,6 +64,6 @@ Route::prefix('admin')->group(function () {
     // Protected admin routes
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/laptops', [LaptopController::class, 'store'])->name('admin.laptops.store');
-    Route::put('/laptops/{laptop}', [LaptopController::class, 'update'])->name('admin.laptops.update');
+    Route::put('/laptops/{kode}', [LaptopController::class, 'update'])->name('admin.laptops.update');
     Route::delete('/laptops/{laptop}', [LaptopController::class, 'destroy'])->name('admin.laptops.destroy');
 });

@@ -18,7 +18,7 @@ class Konfirmasi extends Model
         'keperluan_sewa',
         'harga_sewa', // Menambahkan harga_sewa
         'id_sewa',
-        'id_laptop',
+        'kode',
         'tanggal_sewa',
         'tanggal_pengembalian',
         'status',
