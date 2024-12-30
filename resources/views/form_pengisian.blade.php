@@ -145,6 +145,7 @@
                 <label class="col-sm-4 col-form-label">Nama Laptop :</label>
                 <div class="col-sm-8">
                     <p class="form-control-plaintext">{{ $nama }}</p>
+                    <input type="hidden" name="nama_laptop" value="{{ $nama }}" />
                 </div>
             </div>
             <div class="form-group row">

@@ -25,6 +25,7 @@
         @include('admin.partials.rental-management')
 
         <!-- User Management -->
+        @include('admin.partials.daftar-penyewa')
     </main>
 </div>
 @endsection

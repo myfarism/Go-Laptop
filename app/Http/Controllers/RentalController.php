@@ -38,6 +38,7 @@ class RentalController extends Controller
             'harga' => $request->harga*$durasiSewa, // Menyimpan harga
             'tanggal_sewa' => $tanggalSewa->toDateString(), // Menyimpan tanggal sewa
             'tanggal_pengembalian' => $tanggalPengembalian->toDateString(), // Menyimpan tanggal pengembalian
+            'nama_laptop' => $request->nama_laptop,
         ]));
 
         // Redirect ke form ketentuan
@@ -74,11 +75,12 @@ class RentalController extends Controller
             'durasi_sewa' => $rentalData['durasiSewa'],
             'keperluan_sewa' => $rentalData['keperluanSewa'],
             'harga_sewa' => $rentalData['harga'], // Menyimpan harga sewa
-            'id_laptop' => $rentalData['id_laptop'],
+            'kode' => $rentalData['id_laptop'],
             'id_sewa' => $rentalData['id_sewa'],
             'tanggal_sewa' => $rentalData['tanggal_sewa'],
             'tanggal_pengembalian' => $rentalData['tanggal_pengembalian'],
             'status' => 'N',
+            'nama_laptop' => $rentalData['nama_laptop'],
         ]);
 
         // Hapus data dari session setelah konfirmasi
@@ -88,4 +90,3 @@ class RentalController extends Controller
         return redirect()->route('home')->with('message', 'Konfirmasi sewa berhasil!');
     }
 }
-

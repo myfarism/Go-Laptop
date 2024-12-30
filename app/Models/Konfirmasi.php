@@ -9,7 +9,10 @@ class Konfirmasi extends Model
 {
     use HasFactory;
 
-    protected $table = 'konfirmasi';
+    protected $table = 'penyewaan';
+
+    public $timestamps = false;
+
 
     protected $fillable = [
         'nama_lengkap',
@@ -22,5 +25,6 @@ class Konfirmasi extends Model
         'tanggal_sewa',
         'tanggal_pengembalian',
         'status',
+        'nama_laptop',
     ];
 }
