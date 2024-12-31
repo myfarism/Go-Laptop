@@ -36,5 +36,6 @@ class Penyewaan extends Model
         'tanggal_pengembalian',
         'status',
         'nama_laptop',
+        'history',
     ];
 }

@@ -29,21 +29,20 @@
                 @foreach($aktif as $laptop)
                 <tr>
                     <td class="border px-4 py-2">{{ $laptop->nama_lengkap }}</td>
-                    <td class="border px-4 py-2">{{ $laptop->kode }}</td>
+                    <td class="border px-4 py-2">{{ $laptop->nama_laptop }}</td>
                     <td class="border px-4 py-2">{{ $laptop->durasi_sewa }}</td>
                     <td class="border px-4 py-2">{{ $laptop->tanggal_sewa }}</td>
                     <td class="border px-4 py-2">{{ $laptop->tanggal_pengembalian }}</td>
                     <td class="border px-4 py-2">{{ $laptop->harga_sewa }}</td>
-                    <!-- <td class="border px-4 py-2">
-                        <button class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
-                                onclick="openEditModal('{{ $laptop->kode }}', '{{ $laptop->nama_laptop }}', '{{ $laptop->prosesor }}', '{{ $laptop->ram }}', '{{ $laptop->penyimpanan }}', '{{ $laptop->layar }}', '{{ $laptop->harga_sewa }}', '{{ $laptop->deskripsi }}', '{{ $laptop->status }}', '{{ asset('storage/'.$laptop->gambar) }}')">
-                            Konfirmasi
-                        </button>
-                        <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                                onclick="confirmDelete('{{ $laptop->kode }}', '{{ $laptop->nama_laptop }}')">
-                            Hapus
-                        </button>
-                    </td> -->
+                    <td class="border px-4 py-2">
+                        <form action="{{ route('penyewaan.hapusSewa', $laptop->id_sewa) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin memperbarui status penyewaan ini?')">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
+                                Hapus
+                            </button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -19,12 +19,13 @@ class Konfirmasi extends Model
         'nip_nim',
         'durasi_sewa',
         'keperluan_sewa',
-        'harga_sewa', // Menambahkan harga_sewa
+        'harga_sewa',
         'id_sewa',
         'kode',
         'tanggal_sewa',
         'tanggal_pengembalian',
         'status',
         'nama_laptop',
+        'history',
     ];
 }

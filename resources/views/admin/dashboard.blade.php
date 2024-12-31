@@ -26,6 +26,9 @@
 
         <!-- User Management -->
         @include('admin.partials.daftar-penyewa')
+
+        <!-- User History -->
+        @include('admin.partials.daftar-history')
     </main>
 </div>
 @endsection

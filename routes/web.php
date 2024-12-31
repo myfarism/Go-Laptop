@@ -73,3 +73,4 @@ Route::prefix('admin')->group(function () {
 //Penyewaan
 Route::post('/penyewaan/konfirmasi/{id}', [PenyewaanController::class, 'konfirmasi'])->name('penyewaan.konfirmasi');
 Route::delete('/penyewaan/hapus/{id}', [PenyewaanController::class, 'hapus'])->name('penyewaan.hapus');
+Route::post('/penyewaan/hapus/{id}', [PenyewaanController::class, 'hapusSewa'])->name('penyewaan.hapusSewa');

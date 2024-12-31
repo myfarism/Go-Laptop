@@ -42,10 +42,10 @@
             <h1 class="text-2xl font-bold">Admin Dashboard</h1>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="{{ route('admin.dashboard') }}" class="hover:underline">Dashboard</a></li>
+                    <!-- <li><a href="{{ route('admin.dashboard') }}" class="hover:underline">Dashboard</a></li>
                     <li><a href="#laptops" class="hover:underline">Manajemen Laptop</a></li>
                     <li><a href="#rentals" class="hover:underline">Manajemen Penyewaan</a></li>
-                    <li><a href="#users" class="hover:underline">Manajemen User</a></li>
+                    <li><a href="#users" class="hover:underline">Manajemen User</a></li> -->
                     <li>
                         <form method="POST" action="{{ route('admin.logout') }}" class="inline">
                             @csrf

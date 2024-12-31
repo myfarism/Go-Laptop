@@ -81,6 +81,7 @@ class RentalController extends Controller
             'tanggal_pengembalian' => $rentalData['tanggal_pengembalian'],
             'status' => 'N',
             'nama_laptop' => $rentalData['nama_laptop'],
+            'history' => 'N',
         ]);
 
         // Hapus data dari session setelah konfirmasi
