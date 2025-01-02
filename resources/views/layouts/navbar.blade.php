@@ -34,9 +34,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ $current_page == 'tentang' ? 'active' : '' }}" href="{{ url('tentang') }}">Tentang Kami</a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link {{ $current_page == 'user' ? 'active' : '' }}" href="{{ url('user') }}"><i class="fas fa-user"></i></a>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

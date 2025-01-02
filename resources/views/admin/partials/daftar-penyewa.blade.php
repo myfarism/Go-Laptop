@@ -39,7 +39,7 @@
                             @csrf
                             @method('POST')
                             <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
-                                Hapus
+                                <img alt="Laptop icon" src="{{ asset('foto/delete.png') }}" width="25" height="25" style="filter: brightness(0) invert(1);"/>
                             </button>
                         </form>
                     </td>

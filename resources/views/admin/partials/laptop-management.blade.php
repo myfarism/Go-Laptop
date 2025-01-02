@@ -39,11 +39,11 @@
                     <td class="border px-4 py-2">
                         <button class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
                                 onclick="openEditModal('{{ $laptop->kode }}', '{{ $laptop->nama_laptop }}', '{{ $laptop->prosesor }}', '{{ $laptop->ram }}', '{{ $laptop->penyimpanan }}', '{{ $laptop->layar }}', '{{ $laptop->harga }}', '{{ $laptop->deskripsi }}', '{{ $laptop->status }}', '{{ asset('storage/'.$laptop->gambar) }}')">
-                            Edit
+                                <img alt="Laptop icon" src="{{ asset('foto/edit.png') }}" width="25" height="25" style="filter: brightness(0) invert(1);"/>
                         </button>
                         <button class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
                                 onclick="confirmDelete('{{ $laptop->kode }}', '{{ $laptop->nama_laptop }}')">
-                            Hapus
+                                <img alt="Laptop icon" src="{{ asset('foto/delete.png') }}" width="25" height="25" style="filter: brightness(0) invert(1);"/>
                         </button>
                     </td>
                 </tr>

@@ -32,5 +32,4 @@
     @include('fitur.promo_card')
     @include('fitur.kelebihan_layanan')
     @include('fitur.testimoni')
-    @include('fitur.footer')
 @endsection

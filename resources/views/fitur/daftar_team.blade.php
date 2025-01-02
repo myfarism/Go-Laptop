@@ -22,6 +22,7 @@
             margin: 10px;
             text-align: left;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height:80%;
             display: flex;
             align-items: center;
             position: relative;
@@ -151,77 +152,6 @@
                             <div class="description">
                                 Fokus pada perencanaan operasional dan memastikan kelancaran pelaksanaan proyek Go
                                 Laptop.
-                            </div>
-                        </div>
-                        <i class="fab fa-linkedin linkedin">
-                        </i>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img alt="Portrait of Staff 1" height="80"
-                            src="https://storage.googleapis.com/a1aa/image/x2sel1n0uxx7M61XTxcHApXaukfCMg5iJfNGWmj959bOnI6nA.jpg"
-                            width="80" />
-                        <div class="info">
-                            <div class="name">
-                                Staff 1
-                            </div>
-                            <div class="position">
-                                Spesialis Customer Support
-                            </div>
-                            <div class="divider">
-                            </div>
-                            <div class="description">
-                                Peduli dengan pengalaman pengguna, bertugas memberikan pelayanan terbaik kepada pengguna
-                                Go Laptop.
-                            </div>
-                        </div>
-                        <i class="fab fa-linkedin linkedin">
-                        </i>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img alt="Portrait of Staff 2" height="80"
-                            src="https://storage.googleapis.com/a1aa/image/c9fCjmPWY3T5OiNvEci43A6c4Bqh0XQzLLwgPJhYtOs2JieTA.jpg"
-                            width="80" />
-                        <div class="info">
-                            <div class="name">
-                                Staff 2
-                            </div>
-                            <div class="position">
-                                Spesialis Pengadaan
-                            </div>
-                            <div class="divider">
-                            </div>
-                            <div class="description">
-                                Memastikan ketersediaan perangkat laptop dengan spesifikasi terbaik untuk kebutuhan
-                                akademik mahasiswa.
-                            </div>
-                        </div>
-                        <i class="fab fa-linkedin linkedin">
-                        </i>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="team-card">
-                        <img alt="Portrait of Staff 3" height="80"
-                            src="https://storage.googleapis.com/a1aa/image/UDf5qU61w0QFRSIJbNZKRuVRctm6BB75A8HFTok6mFm0JieTA.jpg"
-                            width="80" />
-                        <div class="info">
-                            <div class="name">
-                                Staff 3
-                            </div>
-                            <div class="position">
-                                Desainer Grafis
-                            </div>
-                            <div class="divider">
-                            </div>
-                            <div class="description">
-                                Kemampuan desain grafis, menciptakan tampilan visual yang menarik untuk website dan
-                                branding Go Laptop.
                             </div>
                         </div>
                         <i class="fab fa-linkedin linkedin">

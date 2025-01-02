@@ -38,14 +38,14 @@
                         <form action="{{ route('penyewaan.konfirmasi', $laptop->id_sewa) }}" method="POST" class="inline">
                             @csrf
                             <button type="submit" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">
-                                Konfirmasi
+                                <img alt="Laptop icon" src="{{ asset('foto/check.png') }}" width="25" height="25" style="filter: brightness(0) invert(1);"/>
                             </button>
                         </form>
                         <form action="{{ route('penyewaan.hapus', $laptop->id_sewa) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">
-                                Hapus
+                            <img alt="Laptop icon" src="{{ asset('foto/delete.png') }}" width="25" height="25" style="filter: brightness(0) invert(1);"/>
                             </button>
                         </form>
                     </td>

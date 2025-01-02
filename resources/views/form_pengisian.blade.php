@@ -21,7 +21,7 @@
         }
 
         .header img {
-            width: 50px;
+            width: 10%;
             vertical-align: middle;
         }
 
@@ -128,8 +128,7 @@
 
 <body>
     <div class="header">
-        <img alt="Laptop icon" height="50" src="https://storage.googleapis.com/a1aa/image/tx8ppPa93fwMf0FLDJ6Fcdke588KokibSuHCxWaVf0eB4myfE.jpg" width="50" />
-        <h1>CO LAPTOP</h1>
+        <img alt="Laptop icon" src="{{ asset('foto/Frame 9.png') }}" width="50" />
     </div>
     <div class="container">
         <form id="rentalForm" action="{{ route('form_pengisian.submit') }}" method="POST">

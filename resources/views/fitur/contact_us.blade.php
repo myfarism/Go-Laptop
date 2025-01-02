@@ -83,19 +83,6 @@
         </div>
         <div class="contact-form">
             <div class="form-container">
-                <div class="form-check form-check-inline">
-                    <input checked="" class="form-check-input" id="sayHi" name="contactType" type="radio"
-                        value="sayHi" />
-                    <label class="form-check-label" for="sayHi">
-                        Say Hi
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" id="getQuote" name="contactType" type="radio" value="getQuote" />
-                    <label class="form-check-label" for="getQuote">
-                        Get a Quote
-                    </label>
-                </div>
                 <form>
                     <div class="mb-3">
                         <label class="form-label" for="name">
