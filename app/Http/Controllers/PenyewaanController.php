@@ -62,11 +62,20 @@ class PenyewaanController extends Controller
             return redirect()->back()->with('error', 'Data penyewaan tidak ditemukan.');
         }
 
+        $laptop = Laptop::find($penyewaan->kode);
+
+        if (!$laptop) {
+            return redirect()->back()->with('error', 'Laptop yang disewa tidak ditemukan.');
+        }
+
         // Ubah status history menjadi 'Y' (misalnya, 'Y' berarti sudah selesai atau dibatalkan)
         $penyewaan->history = 'Y';
+        $penyewaan->status = 'N';
+        $laptop->status = 'tidak disewa';
 
         // Simpan perubahan
         $penyewaan->save();
+        $laptop->save();
 
         return redirect()->back()->with('success', 'Status history berhasil diperbarui.');
     }

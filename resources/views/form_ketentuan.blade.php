@@ -29,8 +29,8 @@
         }
 
         .header img {
-            width: 50px;
-            height: 50px;
+            width: 30%;
+            height: 10%;
         }
 
         .header h1 {
@@ -76,12 +76,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <img alt="Laptop icon" height="50"
-                src="https://storage.googleapis.com/a1aa/image/tm2WkZv5WZapHhinJmXxDn5zCUuaUPhRom2FyaMRFRJVVlfJA.jpg"
-                width="50" />
-            <h1>
-                CO LAPTOP
-            </h1>
+            <img alt="Laptop icon" src="{{ asset('foto/Frame 9.png') }}"  />
         </div>
         <div class="content">
             <h2>

@@ -27,7 +27,9 @@ class DashboardController extends Controller
         $laptops = Laptop::all();
 
         // Mengambil data penyewaan yang belum selesai (status 'N')
-        $penyewaan = Penyewaan::where('status', 'N')->get();
+        $penyewaan = Penyewaan::where('status', 'N')
+            ->where('history', 'N')
+            ->get();
 
         // Mengambil data penyewaan yang aktif (status 'Y'), belum bersejarah ('history' = 'N'), dan tanggal pengembalian masih di masa depan
         $aktif = Penyewaan::where('status', 'Y')
