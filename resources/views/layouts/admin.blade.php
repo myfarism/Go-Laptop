@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Admin Dashboard') - Rental Laptop</title>
     
@@ -31,6 +31,20 @@
             max-height: 300px; /* Set a maximum height for the table */
             overflow-y: auto; /* Enable vertical scrolling */
         }
+        .logout-button {
+            background-color: transparent; /* Latar belakang transparan */
+            color: white; /* Warna teks putih */
+            border: none; /* Tanpa border */
+            cursor: pointer; /* Kursor pointer saat hover */
+            transition: color 0.3s, background-color 0.3s; /* Transisi halus untuk perubahan warna */
+            padding: 10px 20px; /* Padding untuk ruang di dalam tombol */
+            border-radius: 5px; /* Sudut melengkung */
+        }
+
+        .logout-button:hover {
+            color: gray; /* Warna teks saat hover */
+            background-color: white; /* Garis bawah saat hover */
+        }
     </style>
 
     @stack('styles')
@@ -49,7 +63,7 @@
                     <li>
                         <form method="POST" action="{{ route('admin.logout') }}" class="inline">
                             @csrf
-                            <button type="submit" class="hover:underline">Logout</button>
+                            <button type="submit" class="logout-button">Logout</button>
                         </form>
                     </li>
                 </ul>

@@ -30,9 +30,11 @@
 
         .team-card img {
             border-radius: 50%;
-            width: 80px;
-            height: 80px;
+            width: 25%;
+            height: 65%;
             margin-right: 20px;
+            object-fit: cover; /* Cover the card */
+            z-index: 1;
         }
 
         .team-card .info {
@@ -91,9 +93,8 @@
             <div class="row mt-4">
                 <div class="col-md-4">
                     <div class="team-card">
-                        <img alt="Portrait of M. Faris Hafizh" height="80"
-                            src="https://storage.googleapis.com/a1aa/image/183NuiqbWfxNdCp3yMfJF3jTxLxB4j5Y4HoDTS4pL9ArTE9TA.jpg"
-                            width="80" />
+                        <img alt="Portrait of M. Faris Hafizh"
+                            src="{{ asset('foto/ris.jpg') }}"/>
                         <div class="info">
                             <div class="name">
                                 M. Faris Hafizh
@@ -114,9 +115,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="team-card">
-                        <img alt="Portrait of M. Luthfi T." height="80"
-                            src="https://storage.googleapis.com/a1aa/image/8wWf6Ujslg1MW6B9EtwMeScDsVR904URn3ve789pi8TMnI6nA.jpg"
-                            width="80" />
+                        <img alt="Portrait of M. Luthfi T."
+                            src="{{ asset('foto/fi.jpg') }}" />
                         <div class="info">
                             <div class="name">
                                 M. Luthfi T.
@@ -137,9 +137,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="team-card">
-                        <img alt="Portrait of Arellia Agustin" height="80"
-                            src="https://storage.googleapis.com/a1aa/image/tSfQWF3lO2W6aic3NSPKde0N3M0B6avCwfVaf8Mlrzz8OR0PB.jpg"
-                            width="80" />
+                        <img alt="Portrait of Arellia Agustin"
+                            src="{{ asset('foto/rel.jpg') }}"/>
                         <div class="info">
                             <div class="name">
                                 Arellia Agustin

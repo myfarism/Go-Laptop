@@ -21,7 +21,7 @@
                         </div>
                         <h5 class="card-title">Harga</h5>
                         <div class="price-range mb-3">
-                            <h6 class="price_label">Harga Maksimum</h6>
+                            <h6 class="price_label">Harga Minimum</h6>
                             <input 
                                 class="form-range"
                                 id ="min_price" 
