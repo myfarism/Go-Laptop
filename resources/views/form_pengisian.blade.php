@@ -177,7 +177,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Harga Sewa :</label>
+                <label class="col-sm-4 col-form-label">Harga Sewa/hari :</label>
                 <div class="col-sm-8">
                     <p class="form-control-plaintext">{{ $harga }}</p>
                     <!-- Add hidden input field to submit the harga_sewa value -->

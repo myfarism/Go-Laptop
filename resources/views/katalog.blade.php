@@ -26,7 +26,7 @@
                                 class="form-range"
                                 id ="min_price" 
                                 name="min_price" 
-                                max="50000" 
+                                max="100000" 
                                 min="0" 
                                 step="1000" 
                                 type="range" 
@@ -39,14 +39,14 @@
                                 class="form-range" 
                                 id = "max_price"
                                 name="max_price" 
-                                max="50000" 
+                                max="100000" 
                                 min="0" 
                                 step="1000" 
                                 type="range" 
-                                value="{{ request('max_price', 50000) }}" 
+                                value="{{ request('max_price', 100000) }}" 
                             />
                         </div>
-                        <p>Price: Rp<span id="minPriceValue">{{ number_format(request('min_price', 0), 0, ',', '.') }}</span> - Rp<span id="maxPriceValue">{{ number_format(request('max_price', 50000), 0, ',', '.') }}</span></p>
+                        <p>Harga: Rp<span id="minPriceValue">{{ number_format(request('min_price', 0), 0, ',', '.') }}</span> - Rp<span id="maxPriceValue">{{ number_format(request('max_price', 100000), 0, ',', '.') }}</span></p>
                         <button type="submit" class="btn btn-custom w-100">Filter</button>
                     </form>
                 </div>
@@ -57,7 +57,7 @@
                 @foreach ($laptops as $laptop)
                 <div class="col-md-6 mt-3">
                     <div class="card p-4">
-                        <img src="{{ $laptop->gambar }}" alt="{{ $laptop->gambar }}" class="card-img-top">
+                    <img src="{{ asset('storage/' . $laptop->gambar) }}" alt="{{ $laptop->gambar }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{ $laptop->nama_laptop }}</h5>
                             <ul>
@@ -65,6 +65,7 @@
                                 <li>RAM: {{ $laptop->ram }}</li>
                                 <li>Penyimpanan: {{ $laptop->penyimpanan }}</li>
                                 <li>Layar: {{ str_replace('"', ' inch', $laptop->layar) }}</li>
+                                <li>Harga: Rp. {{ number_format($laptop->harga, 0, ',', '.') }}</li>
                             </ul>
                             <p>{{ $laptop->deskripsi }}</p>
                             <a href="{{ route('sewa', [

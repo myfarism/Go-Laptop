@@ -35,6 +35,8 @@ class LaptopController extends Controller
         try {
             // Menyimpan gambar
             $imagePath = $request->file('gambar')->store('produk', 'public');
+            //$imagePath = $request->file('gambar')->storeAs('produk', $request->file('gambar')->getClientOriginalName());
+
             Log::info('Gambar berhasil disimpan di:', ['path' => $imagePath]);
 
             // Menyimpan data laptop ke database

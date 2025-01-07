@@ -11,7 +11,7 @@ class KatalogController extends Controller
     {
         $search = $request->input('search', '');
         $min_price = $request->input('min_price', 0);
-        $max_price = $request->input('max_price', 50000);
+        $max_price = $request->input('max_price', 100000);
 
         $laptops = Laptop::whereBetween('harga', [$min_price, $max_price])
             ->where('nama_laptop', 'like', "%$search%")
